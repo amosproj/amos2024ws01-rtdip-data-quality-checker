@@ -19,6 +19,8 @@ on:
   push:
     branches:
       - develop
+      - "feature/**"
+      - "hotfix/**"
 
 jobs:
   job_run_unit_tests_previous_versions:
