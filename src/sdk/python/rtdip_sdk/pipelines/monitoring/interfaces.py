@@ -13,8 +13,12 @@
 # limitations under the License.
 
 from abc import abstractmethod
+
+from pyspark.sql import DataFrame
 from ..interfaces import PipelineComponentBaseInterface
 
 
 class MonitoringBaseInterface(PipelineComponentBaseInterface):
-    pass
+    @abstractmethod
+    def check(self) -> DataFrame:
+        pass
