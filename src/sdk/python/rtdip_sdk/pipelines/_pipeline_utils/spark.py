@@ -13,7 +13,7 @@
 # limitations under the License.
 
 import logging
-from pyspark.sql import SparkSession
+from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.types import (
     StructType,
     StructField,
@@ -116,6 +116,49 @@ def get_dbutils(
 
 #     def onQueryTerminated(self, event):
 #         logging.info("Query terminated: {} {}".format(event.id, event.name))
+
+def is_dataframe_partially_conformed_in_schema(dataframe: DataFrame, schema: StructType, throw_error: bool = True) -> bool:
+    """
+    Returns true if all columns in the dataframe are contained in the scheme with appropriate type
+    """
+    for column in dataframe.schema:
+        if column.name in schema.names:
+            schema_field = schema[column.name]
+            if isinstance(column.dataType, type(schema_field.dataType)):
+                continue
+            else:
+                # column of wrong type
+                if not throw_error:
+                    return False
+                else:
+                    raise ValueError("Column {0} is of Type {1}, expected Type {2}".format(column, column.dataType, schema_field.dataType))
+
+        else:
+            # dataframe contains column not expected ins schema
+            if not throw_error:
+                return False
+            else:
+                raise ValueError("Column {0} is not expected in dataframe".format(column))
+    return True
+
+
+def conform_dataframe_to_schema(dataframe: DataFrame, schema: StructType, throw_error: bool = True) -> DataFrame:
+    """
+    Tries to convert all commong to the given scheme
+    Raises Exception on non-conforming dataframe
+    """
+    for column in dataframe.schema:
+        c_name = column.name
+        if c_name in schema.names:
+            schema_field = schema[c_name]
+            if isinstance(column.dataType, type(schema_field.dataType)):
+                # column is of right type, skip it
+                continue
+            dataframe = dataframe.withColumn(c_name, dataframe[c_name].cast(schema_field.dataType))
+        else:
+            raise ValueError("Column {0} is not expected in dataframe".format(column))
+    return dataframe
+
 
 EVENTHUB_SCHEMA = StructType(
     [

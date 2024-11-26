@@ -23,6 +23,7 @@ from pmdarima import auto_arima
 
 from ....interfaces import WranglerBaseInterface
 from ....._pipeline_utils.models import Libraries, SystemType
+from ......_sdk_utils.pandas import _prepare_pandas_to_convert_to_spark
 
 
 class ArimaPrediction(WranglerBaseInterface):
@@ -232,9 +233,7 @@ class ArimaPrediction(WranglerBaseInterface):
 
             extended_df = pd.concat([base_df, predicted_df], ignore_index=True)
 
-            # Workaround needed for PySpark versions <3.4
-            if not hasattr(extended_df, "iteritems"):
-                extended_df.iteritems = extended_df.items
+            extended_df = _prepare_pandas_to_convert_to_spark(extended_df)
 
             predicted_source_pyspark_dataframe = self.spark_session.createDataFrame(
                 extended_df
