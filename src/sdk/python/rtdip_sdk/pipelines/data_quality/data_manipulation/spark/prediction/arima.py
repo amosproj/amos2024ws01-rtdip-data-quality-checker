@@ -16,13 +16,14 @@ from typing import List
 import pandas as pd
 from pandas import DataFrame
 from pyspark.sql import DataFrame as PySparkDataFrame, SparkSession, functions as F
-from pyspark.sql.types import StringType, TimestampType, FloatType
-from pyspark.sql.functions import col
+from pyspark.sql.types import StringType, TimestampType, FloatType, NumericType, StructField, StructType
 from statsmodels.tsa.arima.model import ARIMA, ARIMAResults
 from pmdarima import auto_arima
 
 from ...interfaces import DataManipulationBaseInterface
 from ....input_validator import InputValidator
+from ....._pipeline_utils.spark import split_by_source, PROCESS_DATA_MODEL_EVENT_SCHEMA
+from ......_sdk_utils.pandas import _prepare_pandas_to_convert_to_spark
 from src.sdk.python.rtdip_sdk.pipelines._pipeline_utils.models import (
     Libraries,
     SystemType,
@@ -176,36 +177,26 @@ class ArimaPrediction(DataManipulationBaseInterface, InputValidator):
         Returns:
             DataFrame: A PySpark DataFrame with forcasted value entries on each source.
         """
-        if not self._is_column_type(self.df, "EventTime", TimestampType):
-            if self._is_column_type(self.df, "EventTime", StringType):
-                # Attempt to parse the first format, then fallback to the second
-                self.df = self.df.withColumn(
-                    "EventTime",
-                    F.coalesce(
-                        F.to_timestamp("EventTime", "yyyy-MM-dd HH:mm:ss.SSS"),
-                        F.to_timestamp("EventTime", "yyyy-MM-dd HH:mm:ss"),
-                        F.to_timestamp("EventTime", "dd.MM.yyyy HH:mm:ss"),
-                    ),
-                )
-        if not self._is_column_type(self.df, "Value", FloatType):
-            self.df = self.df.withColumn("Value", self.df["Value"].cast(FloatType()))
+        expected_scheme = StructType(
+            [
+                StructField("TagName", StringType(), True),
+                StructField("EventTime", TimestampType(), True),
+                StructField("Status", StringType(), True),
+                StructField("Value", NumericType(), True),
+            ]
+        )
 
-        dfs_by_source = self._split_by_source()
+        self.validate(expected_scheme)
 
+        dfs_by_source = split_by_source(self.df, "TagName", "EventTime")
         predicted_dfs: List[PySparkDataFrame] = []
 
         for source, df in dfs_by_source.items():
-            if len(dfs_by_source) > 1:
-                self.rows_to_analyze = df.count()
-                self.rows_to_predict = int(df.count() / 2)
-
             base_df = df.toPandas()
-            base_df["EventTime"] = pd.to_datetime(base_df["EventTime"])
+            base_df["EventTime"] = pd.to_datetime(base_df["EventTime"]).astype("datetime64[ns]")
             base_df["Value"] = base_df["Value"].astype("float64")
-            base_df["EventTime"] = base_df["EventTime"].astype("datetime64[ns]")
             last_event_time = base_df["EventTime"].iloc[-1]
             second_last_event_time = base_df["EventTime"].iloc[-2]
-
             interval = last_event_time - second_last_event_time
             new_event_times = [
                 last_event_time + (i * interval)
@@ -237,8 +228,7 @@ class ArimaPrediction(DataManipulationBaseInterface, InputValidator):
             extended_df = pd.concat([base_df, predicted_df], ignore_index=True)
 
             # Workaround needed for PySpark versions <3.4
-            if not hasattr(extended_df, "iteritems"):
-                extended_df.iteritems = extended_df.items
+            extended_df = _prepare_pandas_to_convert_to_spark(extended_df)
 
             predicted_source_pyspark_dataframe = self.spark_session.createDataFrame(
                 extended_df
@@ -296,15 +286,4 @@ class ArimaPrediction(DataManipulationBaseInterface, InputValidator):
 
         return model.fit()
 
-    def _split_by_source(self) -> dict:
-        """
-        Helper method to separate individual time series based on their source
-        """
-        tag_names = self.df.select("TagName").distinct().collect()
-        tag_names = [row["TagName"] for row in tag_names]
-        source_dict = {
-            tag: self.df.filter(col("TagName") == tag).orderBy("EventTime")
-            for tag in tag_names
-        }
 
-        return source_dict
