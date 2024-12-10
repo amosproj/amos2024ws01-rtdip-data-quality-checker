@@ -11,18 +11,23 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import statistics
+from enum import Enum
 from typing import List
 
 import pandas as pd
 from pandas import DataFrame
 from pyspark.sql import DataFrame as PySparkDataFrame, SparkSession, functions as F
-from pyspark.sql.types import StringType, TimestampType, FloatType
-from pyspark.sql.functions import col
+from pyspark.sql.functions import col, lit
+from pyspark.sql.types import StringType, TimestampType, FloatType, NumericType, StructField, StructType
 from statsmodels.tsa.arima.model import ARIMA, ARIMAResults
 from pmdarima import auto_arima
+import numpy as np
 
 from ...interfaces import DataManipulationBaseInterface
 from ....input_validator import InputValidator
+from ....._pipeline_utils.spark import split_by_source, PROCESS_DATA_MODEL_EVENT_SCHEMA
+from ......_sdk_utils.pandas import _prepare_pandas_to_convert_to_spark
 from src.sdk.python.rtdip_sdk.pipelines._pipeline_utils.models import (
     Libraries,
     SystemType,
@@ -83,22 +88,34 @@ class ArimaPrediction(DataManipulationBaseInterface, InputValidator):
         concentrate_scale (bool): ARIMA-Specific setting
         trend_offset (int): ARIMA-Specific setting
         missing (str): ARIMA-Specific setting
-        arima_auto (bool) pmdarima-specific setting to enable auto_arima
     """
 
-    df: PySparkDataFrame
+    df: PySparkDataFrame = None
     spark_session: SparkSession
 
     column_to_predict: str
     rows_to_predict: int
     rows_to_analyze: int
 
+    value_name: str
+    timestamp_name: str
+    source_name: str
+    external_regressor_names: List[str]
+
+    class InputStyle(Enum):
+        COLUMN_BASED = 1
+        SOURCE_BASED = 2
+
     def __init__(
         self,
         past_data: PySparkDataFrame,
-        column_name: str,
-        timestamp_column_name: str = None,
-        external_regressor_column_names: List[str] = None,
+        past_data_style : InputStyle = InputStyle.COLUMN_BASED,
+        to_extend_name: str = None, #either source or column
+        value_name: str = None,
+        timestamp_name: str = None,
+        source_name: str = None,
+        status_name: str = None,
+        external_regressor_names: List[str] = None,
         number_of_data_points_to_predict: int = 50,
         number_of_data_points_to_analyze: int = None,
         order: tuple = (0, 0, 0),
@@ -108,18 +125,24 @@ class ArimaPrediction(DataManipulationBaseInterface, InputValidator):
         enforce_invertibility: bool = True,
         concentrate_scale: bool = False,
         trend_offset: int = 1,
-        missing: str = "None",
-        arima_auto: bool = False,
+        missing: str = "None"
     ) -> None:
-        if not column_name in past_data.columns:
-            raise ValueError("{} not found in the DataFrame.".format(column_name))
+        if not value_name in past_data.columns:
+            raise ValueError("{} not found in the DataFrame.".format(value_name))
 
-        self.df = past_data
+        self.past_data = past_data
+        self.past_data_style = past_data_style
+        # Convert source-based datafram to column-based
+        if self.df is None:
+            if past_data_style == self.InputStyle.COLUMN_BASED:
+                self.df = past_data
+            elif past_data_style == self.InputStyle.SOURCE_BASED:
+                self.df = past_data.groupby(timestamp_name).pivot(source_name).agg(F.first(value_name))
+
         self.spark_session = past_data.sparkSession
-        self.column_to_predict = column_name
+        self.column_to_predict = to_extend_name
         self.rows_to_predict = number_of_data_points_to_predict
         self.rows_to_analyze = number_of_data_points_to_analyze or past_data.count()
-        self.arima_auto = arima_auto
         self.order = order
         self.seasonal_order = seasonal_order
         self.trend = trend
@@ -128,17 +151,19 @@ class ArimaPrediction(DataManipulationBaseInterface, InputValidator):
         self.concentrate_scale = concentrate_scale
         self.trend_offset = trend_offset
         self.missing = missing
+        self.value_name = value_name
+        self.timestamp_name = timestamp_name
+        self.source_name = source_name
+        self.external_regressor_names = external_regressor_names
+        self.status_name = status_name
 
-        if external_regressor_column_names is not None:
+        if external_regressor_names is not None:
             # TODO: exog, e.g. external regressors / exogenic variables
             raise NotImplementedError(
                 "Handling of external regressors is not implemented"
             )
-        if timestamp_column_name is not None:
-            # TODO: Adds support for datetime
-            raise NotImplementedError("Timestamp Indexing not implemented")
-            # input_data.index = self.df.loc[:, timestamp_column_name].sort_index(ascending=True).tail(number_of_data_points_to_analyze)
-            # input_data.index = pd.DatetimeIndex(input_data.index).to_period()
+        # input_data.index = self.df.loc[:, timestamp_column_name].sort_index(ascending=True).tail(number_of_data_points_to_analyze)
+        # input_data.index = pd.DatetimeIndex(input_data.index).to_period()
 
     @staticmethod
     def system_type():
@@ -176,135 +201,145 @@ class ArimaPrediction(DataManipulationBaseInterface, InputValidator):
         Returns:
             DataFrame: A PySpark DataFrame with forcasted value entries on each source.
         """
-        if not self._is_column_type(self.df, "EventTime", TimestampType):
-            if self._is_column_type(self.df, "EventTime", StringType):
-                # Attempt to parse the first format, then fallback to the second
-                self.df = self.df.withColumn(
-                    "EventTime",
-                    F.coalesce(
-                        F.to_timestamp("EventTime", "yyyy-MM-dd HH:mm:ss.SSS"),
-                        F.to_timestamp("EventTime", "yyyy-MM-dd HH:mm:ss"),
-                        F.to_timestamp("EventTime", "dd.MM.yyyy HH:mm:ss"),
-                    ),
-                )
-        if not self._is_column_type(self.df, "Value", FloatType):
-            self.df = self.df.withColumn("Value", self.df["Value"].cast(FloatType()))
+        # expected_scheme = StructType(
+        #    [
+        #        StructField("TagName", StringType(), True),
+        #        StructField("EventTime", TimestampType(), True),
+        #        StructField("Status", StringType(), True),
+        #        StructField("Value", NumericType(), True),
+        #    ]
+        #)
 
-        dfs_by_source = self._split_by_source()
+        # self.validate(expected_scheme)
 
-        predicted_dfs: List[PySparkDataFrame] = []
+        pd_df = self.df.toPandas()
+        main_signal_df = pd_df[pd_df[self.column_to_predict].notna()]
 
-        for source, df in dfs_by_source.items():
-            if len(dfs_by_source) > 1:
-                self.rows_to_analyze = df.count()
-                self.rows_to_predict = int(df.count() / 2)
+        main_signal_df[self.timestamp_name] = pd.to_datetime(main_signal_df[self.timestamp_name]).astype("datetime64[ns]")
+        #main_signal_df["Value"] = main_signal_df["Value"].astype("float64")
+        #main_signal_df = main_signal_df.set_index("EventTime")
 
-            base_df = df.toPandas()
-            base_df["EventTime"] = pd.to_datetime(base_df["EventTime"])
-            base_df["Value"] = base_df["Value"].astype("float64")
-            base_df["EventTime"] = base_df["EventTime"].astype("datetime64[ns]")
-            last_event_time = base_df["EventTime"].iloc[-1]
-            second_last_event_time = base_df["EventTime"].iloc[-2]
+        input_data = main_signal_df[self.column_to_predict].sort_index(ascending=True).tail(self.rows_to_analyze)
 
-            interval = last_event_time - second_last_event_time
-            new_event_times = [
-                last_event_time + (i * interval)
-                for i in range(1, self.rows_to_predict + 1)
-            ]
-
-            source_model = self._get_source_model(base_df)
-
-            forecast = source_model.get_forecast(steps=self.rows_to_predict)
-            prediction_series = forecast.predicted_mean
-
-            if len(prediction_series) != len(new_event_times):
-                min_length = min(len(prediction_series), len(new_event_times))
-                prediction_series = prediction_series[:min_length]
-                new_event_times = new_event_times[:min_length]
-
-            predicted_df = pd.DataFrame(
-                {
-                    "TagName": [base_df["TagName"].iloc[0]] * len(new_event_times),
-                    "EventTime": new_event_times,
-                    "Status": ["Predicted"] * len(new_event_times),
-                    "Value": prediction_series.values,
-                }
-            )
-            predicted_df["EventTime"] = predicted_df["EventTime"].astype(
-                "datetime64[ns]"
-            )
-
-            extended_df = pd.concat([base_df, predicted_df], ignore_index=True)
-
-            # Workaround needed for PySpark versions <3.4
-            if not hasattr(extended_df, "iteritems"):
-                extended_df.iteritems = extended_df.items
-
-            predicted_source_pyspark_dataframe = self.spark_session.createDataFrame(
-                extended_df
-            )
-            predicted_dfs.append(predicted_source_pyspark_dataframe)
-
-        result_df = predicted_dfs[0]
-        for df in predicted_dfs[1:]:
-            result_df = result_df.unionByName(df)
-
-        return result_df
-
-    def _get_source_model(self, source_df) -> ARIMAResults:
-        """
-        Helper method to get the ARIMA model and calculate the best fitting model if auto_arima is enabled
-        """
-        input_data = (
-            source_df.loc[:, self.column_to_predict]
-            .sort_index(ascending=True)
-            .tail(self.rows_to_analyze)
-        )
-
-        if self.arima_auto:
-            # Default case: False
-            auto_model = auto_arima(
-                y=input_data,
-                seasonal=any(self.seasonal_order),
-                stepwise=True,
-                suppress_warnings=True,
-                trace=True,
-                error_action="ignore",
-                max_order=None,
-            )
-
-            order = auto_model.order
-            seasonal_order = auto_model.seasonal_order
-            trend = "c" if order[1] == 0 else "t"
-
-        else:
-            order = self.order
-            seasonal_order = self.seasonal_order
-            trend = self.trend
-
-        model = ARIMA(
+        source_model = ARIMA(
             endog=input_data,
-            order=order,
-            seasonal_order=seasonal_order,
-            trend=trend,
+            order=self.order,
+            seasonal_order=self.seasonal_order,
+            trend=self.trend,
             enforce_stationarity=self.enforce_stationarity,
             enforce_invertibility=self.enforce_invertibility,
             concentrate_scale=self.concentrate_scale,
             trend_offset=self.trend_offset,
             missing=self.missing,
+        ).fit()
+
+        forecast = source_model.forecast(steps=self.rows_to_predict)
+        inferred_freq = pd.Timedelta(value=statistics.mode(np.diff(main_signal_df[self.timestamp_name].values)))
+
+        pd_forecast_df = pd.DataFrame(
+                {
+                    self.timestamp_name: pd.date_range(start=main_signal_df[self.timestamp_name].max() + inferred_freq, periods=self.rows_to_predict, freq=inferred_freq),
+                    self.column_to_predict: forecast
+                }
+            )
+
+        pd_df = pd.concat([pd_df, pd_forecast_df])
+
+        # Workaround needed for PySpark versions <3.4
+        pd_df = _prepare_pandas_to_convert_to_spark(pd_df)
+
+        if self.past_data_style == self.InputStyle.COLUMN_BASED:
+            raise NotImplementedError(
+                "Column-based export"
+            )
+        elif self.past_data_style == self.InputStyle.SOURCE_BASED:
+            data_to_add = pd_forecast_df[[self.timestamp_name, self.column_to_predict]]
+            data_to_add = data_to_add.rename(columns={self.timestamp_name: self.timestamp_name, self.column_to_predict: self.value_name})
+            data_to_add[self.source_name] = self.column_to_predict
+
+            pd_df_schema = StructType(
+               [
+                    StructField(self.source_name, StringType(), True),
+                    StructField(self.timestamp_name, StringType(), True),
+                    StructField(self.value_name, StringType(), True)
+                ]
+            )
+
+            predicted_source_pyspark_dataframe = self.spark_session.createDataFrame(
+                data_to_add, schema=pd_df_schema
+            )
+
+            if self.status_name is not None:
+                predicted_source_pyspark_dataframe = predicted_source_pyspark_dataframe.withColumn(self.status_name, lit("Predicted"))
+
+            return self.past_data.union(predicted_source_pyspark_dataframe)
+
+    def _get_source_model(self, source_df) -> ARIMAResults:
+        """
+        Helper method to get the ARIMA model and calculate the best fitting model if auto_arima is enabled
+        """
+        pass
+
+
+class ArimaAutoPrediction(ArimaPrediction):
+    def __init__(
+        self,
+        past_data: PySparkDataFrame,
+        past_data_style : ArimaPrediction.InputStyle = ArimaPrediction.InputStyle.COLUMN_BASED,
+        to_extend_name: str = None, #either source or column
+        value_name: str = None,
+        timestamp_name: str = None,
+        source_name: str = None,
+        status_name: str = None,
+        external_regressor_names: List[str] = None,
+        number_of_data_points_to_predict: int = 50,
+        number_of_data_points_to_analyze: int = None,
+        seasonal: bool = False,
+        enforce_stationarity: bool = True,
+        enforce_invertibility: bool = True,
+        concentrate_scale: bool = False,
+        trend_offset: int = 1,
+        missing: str = "None",
+    ) -> None:
+        # Convert source-based datafram to column-based
+        if self.df is None:
+            if past_data_style == past_data_style.COLUMN_BASED:
+                self.df = past_data
+            elif past_data_style == past_data_style.SOURCE_BASED:
+                self.df = past_data.groupby(timestamp_name).pivot(source_name).agg(F.first(value_name))
+
+        # Prepare Input data
+        input_data = self.df.toPandas()
+        input_data = input_data[input_data[to_extend_name].notna()].tail(number_of_data_points_to_analyze)[to_extend_name]
+
+        auto_model = auto_arima(
+            y=input_data,
+            seasonal=seasonal,
+            stepwise=True,
+            suppress_warnings=True,
+            trace=True,
+            error_action="ignore",
+            max_order=None,
         )
 
-        return model.fit()
+        super().__init__(
+            past_data=past_data,
+            past_data_style=past_data_style,
+            to_extend_name=to_extend_name,
+            value_name=value_name,
+            timestamp_name=timestamp_name,
+            source_name=source_name,
+            status_name=status_name,
+            external_regressor_names=external_regressor_names,
+            number_of_data_points_to_predict=number_of_data_points_to_predict,
+            number_of_data_points_to_analyze=number_of_data_points_to_analyze,
+            order=auto_model.order,
+            seasonal_order=auto_model.seasonal_order,
+            trend = "c" if auto_model.order[1] == 0 else "t",
+            enforce_stationarity=enforce_stationarity,
+            enforce_invertibility=enforce_invertibility,
+            concentrate_scale=concentrate_scale,
+            trend_offset=trend_offset,
+            missing=missing
+        )
 
-    def _split_by_source(self) -> dict:
-        """
-        Helper method to separate individual time series based on their source
-        """
-        tag_names = self.df.select("TagName").distinct().collect()
-        tag_names = [row["TagName"] for row in tag_names]
-        source_dict = {
-            tag: self.df.filter(col("TagName") == tag).orderBy("EventTime")
-            for tag in tag_names
-        }
-
-        return source_dict
