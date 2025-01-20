@@ -19,6 +19,7 @@ on:
   push:
     branches:
       - develop
+      - hotfix/dev-pipeline-docs
 
 jobs:
   job_run_unit_tests_previous_versions:
