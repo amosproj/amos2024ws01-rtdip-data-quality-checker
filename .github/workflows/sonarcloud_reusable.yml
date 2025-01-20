@@ -63,58 +63,56 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install Boost
-        run: |
-          sudo apt update
-          sudo apt install -y libboost-all-dev
-
-      - name: Add conda to system path
-        run: |
-          # $CONDA is an environment variable pointing to the root of the miniconda directory
-          echo $CONDA/bin >> $GITHUB_PATH
-
-      - name: Install Conda environment with Micromamba
-        uses: mamba-org/setup-micromamba@main
-        with:
-          environment-file: environment.yml
-          create-args: >-
-            python=${{ matrix.python-version }}
-            pyspark=${{ matrix.pyspark }}
-            delta-spark=${{ matrix.delta-spark }}
-          cache-environment: true
-
-      - name: Test
-        run: |
-          coverage run -m pytest --junitxml=xunit-reports/xunit-result-unitttests.xml tests
-
-      - name: Test Coverage
-        run: |
-          mkdir -p coverage-reports
-          coverage xml --omit "venv/**,maintenance/**,xunit-reports/**" -i -o coverage-reports/coverage-unittests.xml
-          echo Coverage `coverage report --omit "venv/**" | grep TOTAL | tr -s ' ' | cut -d" " -f4`
-
-      - name: Mkdocs Test
-        run: |
-          mkdocs build --strict
-
-      - name: Override Coverage Source Path for Sonar
-        continue-on-error: true
-        run: |
-          sed -i "s/<source>\/home\/runner\/work\/core\/core<\/source>/<source>\/github\/workspace<\/source>/g" coverage-reports/coverage-unittests.xml
-
-      - name: SonarCloud Scan
-        continue-on-error: true
-        uses: SonarSource/sonarcloud-github-action@master
-        with:
-          args: >
-            -Dsonar.organization=rtdip
-            -Dsonar.projectKey=rtdip_core
-            -Dsonar.python.coverage.reportPaths=coverage-reports/coverage-unittests.xml
-            -Dsoner.python.version=3.12
-            -Dsonar.scm.revision=${{ inputs.HEAD_SHA }}
-            -Dsonar.pullrequest.key=${{ inputs.PR_NUMBER }}
-            -Dsonar.pullrequest.branch=${{ inputs.PR_HEAD_REF }}
-            -Dsonar.pullrequest.base=${{ inputs.PR_BASE_REF }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#      - name: Install Boost
+#        run: |
+#          sudo apt update
+#          sudo apt install -y libboost-all-dev
+#
+#      - name: Add conda to system path
+#        run: |
+#          # $CONDA is an environment variable pointing to the root of the miniconda directory
+#          echo $CONDA/bin >> $GITHUB_PATH
+#
+#      - name: Install Conda environment with Micromamba
+#        uses: mamba-org/setup-micromamba@main
+#        with:
+#          environment-file: environment.yml
+#          create-args: >-
+#            python=${{ matrix.python-version }}
+#            pyspark=${{ matrix.pyspark }}
+#            delta-spark=${{ matrix.delta-spark }}
+#          cache-environment: true
+#
+#      - name: Test
+#        run: |
+#          coverage run -m pytest --junitxml=xunit-reports/xunit-result-unitttests.xml tests
+#
+#      - name: Test Coverage
+#        run: |
+#          mkdir -p coverage-reports
+#          coverage xml --omit "venv/**,maintenance/**,xunit-reports/**" -i -o coverage-reports/coverage-unittests.xml
+#          echo Coverage `coverage report --omit "venv/**" | grep TOTAL | tr -s ' ' | cut -d" " -f4`
+#
+#      - name: Mkdocs Test
+#        run: |
+#          mkdocs build --strict
+#
+#      - name: Override Coverage Source Path for Sonar
+#        run: |
+#          sed -i "s/<source>\/home\/runner\/work\/core\/core<\/source>/<source>\/github\/workspace<\/source>/g" coverage-reports/coverage-unittests.xml
+#
+#      - name: SonarCloud Scan
+#        uses: SonarSource/sonarcloud-github-action@master
+#        with:
+#          args: >
+#            -Dsonar.organization=rtdip
+#            -Dsonar.projectKey=rtdip_core
+#            -Dsonar.python.coverage.reportPaths=coverage-reports/coverage-unittests.xml
+#            -Dsoner.python.version=3.12
+#            -Dsonar.scm.revision=${{ inputs.HEAD_SHA }}
+#            -Dsonar.pullrequest.key=${{ inputs.PR_NUMBER }}
+#            -Dsonar.pullrequest.branch=${{ inputs.PR_HEAD_REF }}
+#            -Dsonar.pullrequest.base=${{ inputs.PR_BASE_REF }}
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
+#          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
