@@ -67,7 +67,7 @@ jobs:
 
   job_run_unit_tests_and_sonarqube:
     needs: job_download_pr_artifact
-    uses: rtdip/core/.github/workflows/sonarcloud_reusable.yml@develop
+    uses: amosproj/amos2024ws01-rtdip-data-quality-checker/.github/workflows/sonarcloud_reusable.yml@develop
     with:
       REPO_NAME: ${{ github.event.workflow_run.head_repository.full_name }}
       HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}

@@ -22,10 +22,10 @@ on:
 
 jobs:
   job_run_unit_tests_previous_versions:
-    uses: rtdip/core/.github/workflows/test.yml@main
+    uses: amosproj/amos2024ws01-rtdip-data-quality-checker/.github/workflows/test.yml@main
 
   job_run_unit_tests_and_sonarqube:
-    uses: rtdip/core/.github/workflows/sonarcloud_reusable.yml@main
+    uses: amosproj/amos2024ws01-rtdip-data-quality-checker/.github/workflows/sonarcloud_reusable.yml@main
     with:
       REPO_NAME: ""
       HEAD_BRANCH: ""
