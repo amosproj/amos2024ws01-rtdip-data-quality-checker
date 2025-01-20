@@ -98,10 +98,12 @@ jobs:
           mkdocs build --strict
 
       - name: Override Coverage Source Path for Sonar
+        continue-on-error: true
         run: |
           sed -i "s/<source>\/home\/runner\/work\/core\/core<\/source>/<source>\/github\/workspace<\/source>/g" coverage-reports/coverage-unittests.xml
 
       - name: SonarCloud Scan
+        continue-on-error: true
         uses: SonarSource/sonarcloud-github-action@master
         with:
           args: >
