@@ -22,7 +22,7 @@ on:
 
 jobs:
   job_run_unit_tests:
-    uses: amosproj/amos2024ws01-rtdip-data-quality-checker/.github/workflows/test.yml@hotfix/dev_pipeline_docs
+    uses: amosproj/amos2024ws01-rtdip-data-quality-checker/.github/workflows/test.yml@hotfix/dev-pipeline-docs
 
   job_pr_artifact:
     needs: job_run_unit_tests
