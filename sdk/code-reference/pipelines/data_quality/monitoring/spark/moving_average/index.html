@@ -13,28 +13,28 @@
         <meta name="author" content="Real Time Data Ingestion Platform">
       
       
-        <link rel="canonical" href="https://github.com/rtdip/core/sdk/code-reference/pipelines/machine_learning/spark/linear_regression/">
+        <link rel="canonical" href="https://github.com/rtdip/core/sdk/code-reference/pipelines/data_quality/monitoring/spark/moving_average/">
       
       
-        <link rel="prev" href="../data_binning/">
+        <link rel="prev" href="../identify_missing_data_pattern/">
       
       
-        <link rel="next" href="../../../../../pipelines/jobs/">
+        <link rel="next" href="../../../data_manipulation/spark/duplicate_detection/">
       
       
-      <link rel="icon" href="../../../../../../assets/favicon.png">
+      <link rel="icon" href="../../../../../../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.20">
     
     
       
-        <title>Linear Regression - Real Time Data Ingestion Platform</title>
+        <title>Moving Average - Real Time Data Ingestion Platform</title>
       
     
     
-      <link rel="stylesheet" href="../../../../../../assets/stylesheets/main.66ac8b77.min.css">
+      <link rel="stylesheet" href="../../../../../../../assets/stylesheets/main.66ac8b77.min.css">
       
         
-        <link rel="stylesheet" href="../../../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -64,11 +64,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../../../../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="../../../../../../assets/extra.css">
+      <link rel="stylesheet" href="../../../../../../../assets/extra.css">
     
-    <script>__md_scope=new URL("../../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#src.sdk.python.rtdip_sdk.pipelines.machine_learning.spark.linear_regression" class="md-skip">
+        <a href="#src.sdk.python.rtdip_sdk.pipelines.data_quality.monitoring.spark.moving_average" class="md-skip">
           Skip to content
         </a>
       
@@ -109,9 +109,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../../../.." title="Real Time Data Ingestion Platform" class="md-header__button md-logo" aria-label="Real Time Data Ingestion Platform" data-md-component="logo">
+    <a href="../../../../../../.." title="Real Time Data Ingestion Platform" class="md-header__button md-logo" aria-label="Real Time Data Ingestion Platform" data-md-component="logo">
       
-  <img src="../../../../../../assets/logo_lfe.png" alt="logo">
+  <img src="../../../../../../../assets/logo_lfe.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -128,7 +128,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Linear Regression
+              Moving Average
             
           </span>
         </div>
@@ -242,7 +242,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../../.." class="md-tabs__link">
+      <a href="../../../../../../.." class="md-tabs__link">
         
   
     
@@ -261,7 +261,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../../../getting-started/about-rtdip/" class="md-tabs__link">
+        <a href="../../../../../../../getting-started/about-rtdip/" class="md-tabs__link">
           
   
     
@@ -283,7 +283,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../../../overview/" class="md-tabs__link">
+        <a href="../../../../../../overview/" class="md-tabs__link">
           
   
     
@@ -303,7 +303,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../../../api/overview/" class="md-tabs__link">
+        <a href="../../../../../../../api/overview/" class="md-tabs__link">
           
   
     
@@ -329,7 +329,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../../../domains/process_control/overview/" class="md-tabs__link">
+        <a href="../../../../../../../domains/process_control/overview/" class="md-tabs__link">
           
   
     
@@ -352,7 +352,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../../../integration/power-bi/" class="md-tabs__link">
+        <a href="../../../../../../../integration/power-bi/" class="md-tabs__link">
           
   
     
@@ -372,7 +372,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../../../roadmap/roadmap-overview/" class="md-tabs__link">
+        <a href="../../../../../../../roadmap/roadmap-overview/" class="md-tabs__link">
           
   
     
@@ -392,7 +392,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../../../releases/core/" class="md-tabs__link">
+        <a href="../../../../../../../releases/core/" class="md-tabs__link">
           
   
     
@@ -412,7 +412,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../../../blog/" class="md-tabs__link">
+        <a href="../../../../../../../blog/" class="md-tabs__link">
           
   
     
@@ -432,7 +432,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../../../university/overview/" class="md-tabs__link">
+        <a href="../../../../../../../university/overview/" class="md-tabs__link">
           
   
     
@@ -467,9 +467,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../../../.." title="Real Time Data Ingestion Platform" class="md-nav__button md-logo" aria-label="Real Time Data Ingestion Platform" data-md-component="logo">
+    <a href="../../../../../../.." title="Real Time Data Ingestion Platform" class="md-nav__button md-logo" aria-label="Real Time Data Ingestion Platform" data-md-component="logo">
       
-  <img src="../../../../../../assets/logo_lfe.png" alt="logo">
+  <img src="../../../../../../../assets/logo_lfe.png" alt="logo">
 
     </a>
     Real Time Data Ingestion Platform
@@ -496,7 +496,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../.." class="md-nav__link">
+      <a href="../../../../../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -560,7 +560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../getting-started/about-rtdip/" class="md-nav__link">
+      <a href="../../../../../../../getting-started/about-rtdip/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -581,7 +581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../getting-started/installation/" class="md-nav__link">
+      <a href="../../../../../../../getting-started/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -662,7 +662,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../overview/" class="md-nav__link">
+      <a href="../../../../../../overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -771,7 +771,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../authentication/azure/" class="md-nav__link">
+      <a href="../../../../../../authentication/azure/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -792,7 +792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../authentication/azure/" class="md-nav__link">
+      <a href="../../../../../authentication/azure/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -821,7 +821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../authentication/databricks/" class="md-nav__link">
+      <a href="../../../../../../authentication/databricks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -902,7 +902,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../pipelines/framework/" class="md-nav__link">
+      <a href="../../../../../../pipelines/framework/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -985,7 +985,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../pipelines/components/" class="md-nav__link">
+      <a href="../../../../../../pipelines/components/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1112,7 +1112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/spark/eventhub/" class="md-nav__link">
+      <a href="../../../../sources/spark/eventhub/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1133,7 +1133,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/spark/kafka_eventhub/" class="md-nav__link">
+      <a href="../../../../sources/spark/kafka_eventhub/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1154,7 +1154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/spark/delta/" class="md-nav__link">
+      <a href="../../../../sources/spark/delta/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1175,7 +1175,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/spark/delta_sharing/" class="md-nav__link">
+      <a href="../../../../sources/spark/delta_sharing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1196,7 +1196,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/spark/autoloader/" class="md-nav__link">
+      <a href="../../../../sources/spark/autoloader/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1217,7 +1217,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/spark/iot_hub/" class="md-nav__link">
+      <a href="../../../../sources/spark/iot_hub/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1238,7 +1238,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/spark/kafka/" class="md-nav__link">
+      <a href="../../../../sources/spark/kafka/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1259,7 +1259,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/spark/kinesis/" class="md-nav__link">
+      <a href="../../../../sources/spark/kinesis/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1338,7 +1338,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/spark/iso/miso_daily_load_iso/" class="md-nav__link">
+      <a href="../../../../sources/spark/iso/miso_daily_load_iso/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1359,7 +1359,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/spark/iso/miso_historical_load_iso/" class="md-nav__link">
+      <a href="../../../../sources/spark/iso/miso_historical_load_iso/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1380,7 +1380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/spark/iso/pjm_daily_load_iso/" class="md-nav__link">
+      <a href="../../../../sources/spark/iso/pjm_daily_load_iso/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1401,7 +1401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/spark/iso/pjm_historical_load_iso/" class="md-nav__link">
+      <a href="../../../../sources/spark/iso/pjm_historical_load_iso/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1422,7 +1422,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/spark/iso/caiso_daily_load_iso/" class="md-nav__link">
+      <a href="../../../../sources/spark/iso/caiso_daily_load_iso/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1443,7 +1443,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/spark/iso/caiso_historical_load_iso/" class="md-nav__link">
+      <a href="../../../../sources/spark/iso/caiso_historical_load_iso/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1464,7 +1464,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/spark/iso/ercot_daily_load_iso/" class="md-nav__link">
+      <a href="../../../../sources/spark/iso/ercot_daily_load_iso/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1485,7 +1485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/spark/iso/pjm_daily_pricing_iso/" class="md-nav__link">
+      <a href="../../../../sources/spark/iso/pjm_daily_pricing_iso/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1506,7 +1506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/spark/iso/pjm_historical_pricing_iso/" class="md-nav__link">
+      <a href="../../../../sources/spark/iso/pjm_historical_pricing_iso/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1581,7 +1581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/spark/the_weather_company/base_weather/" class="md-nav__link">
+      <a href="../../../../sources/spark/the_weather_company/base_weather/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1602,7 +1602,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/spark/the_weather_company/weather_forecast_api_v1/" class="md-nav__link">
+      <a href="../../../../sources/spark/the_weather_company/weather_forecast_api_v1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1623,7 +1623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/spark/the_weather_company/weather_forecast_api_v1_multi/" class="md-nav__link">
+      <a href="../../../../sources/spark/the_weather_company/weather_forecast_api_v1_multi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1696,7 +1696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/spark/ecmwf/base_mars/" class="md-nav__link">
+      <a href="../../../../sources/spark/ecmwf/base_mars/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1717,7 +1717,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/spark/ecmwf/weather_forecast/" class="md-nav__link">
+      <a href="../../../../sources/spark/ecmwf/weather_forecast/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1802,7 +1802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/python/delta/" class="md-nav__link">
+      <a href="../../../../sources/python/delta/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1823,7 +1823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/python/delta_sharing/" class="md-nav__link">
+      <a href="../../../../sources/python/delta_sharing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1844,7 +1844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/python/entsoe/" class="md-nav__link">
+      <a href="../../../../sources/python/entsoe/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1865,7 +1865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sources/python/mffbas/" class="md-nav__link">
+      <a href="../../../../sources/python/mffbas/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2016,7 +2016,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../transformers/spark/binary_to_string/" class="md-nav__link">
+      <a href="../../../../transformers/spark/binary_to_string/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2037,7 +2037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../transformers/spark/opc_publisher_opcua_json_to_pcdm/" class="md-nav__link">
+      <a href="../../../../transformers/spark/opc_publisher_opcua_json_to_pcdm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2058,7 +2058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../transformers/spark/opc_publisher_opcae_json_to_pcdm/" class="md-nav__link">
+      <a href="../../../../transformers/spark/opc_publisher_opcae_json_to_pcdm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2079,7 +2079,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../transformers/spark/fledge_opcua_json_to_pcdm/" class="md-nav__link">
+      <a href="../../../../transformers/spark/fledge_opcua_json_to_pcdm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2100,7 +2100,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../transformers/spark/edgex_opcua_json_to_pcdm/" class="md-nav__link">
+      <a href="../../../../transformers/spark/edgex_opcua_json_to_pcdm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2121,7 +2121,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../transformers/spark/sem_json_to_pcdm/" class="md-nav__link">
+      <a href="../../../../transformers/spark/sem_json_to_pcdm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2142,7 +2142,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../transformers/spark/ssip_pi_binary_file_to_pcdm/" class="md-nav__link">
+      <a href="../../../../transformers/spark/ssip_pi_binary_file_to_pcdm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2163,7 +2163,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../transformers/spark/ssip_pi_binary_json_to_pcdm/" class="md-nav__link">
+      <a href="../../../../transformers/spark/ssip_pi_binary_json_to_pcdm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2184,7 +2184,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../transformers/spark/pandas_to_pyspark/" class="md-nav__link">
+      <a href="../../../../transformers/spark/pandas_to_pyspark/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2205,7 +2205,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../transformers/spark/pyspark_to_pandas/" class="md-nav__link">
+      <a href="../../../../transformers/spark/pyspark_to_pandas/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2226,7 +2226,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../transformers/spark/honeywell_apm_to_pcdm/" class="md-nav__link">
+      <a href="../../../../transformers/spark/honeywell_apm_to_pcdm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2247,7 +2247,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../transformers/spark/pcdm_to_honeywell_apm/" class="md-nav__link">
+      <a href="../../../../transformers/spark/pcdm_to_honeywell_apm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2268,7 +2268,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../transformers/spark/mirico_json_to_pcdm/" class="md-nav__link">
+      <a href="../../../../transformers/spark/mirico_json_to_pcdm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2337,7 +2337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../transformers/spark/iso/miso_to_mdm/" class="md-nav__link">
+      <a href="../../../../transformers/spark/iso/miso_to_mdm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2358,7 +2358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../transformers/spark/iso/pjm_to_mdm/" class="md-nav__link">
+      <a href="../../../../transformers/spark/iso/pjm_to_mdm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2379,7 +2379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../transformers/spark/iso/ercot_to_mdm/" class="md-nav__link">
+      <a href="../../../../transformers/spark/iso/ercot_to_mdm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2400,7 +2400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../transformers/spark/iso/caiso_to_mdm/" class="md-nav__link">
+      <a href="../../../../transformers/spark/iso/caiso_to_mdm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2471,7 +2471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../transformers/spark/the_weather_company/raw_forecast_to_weather_data_model/" class="md-nav__link">
+      <a href="../../../../transformers/spark/the_weather_company/raw_forecast_to_weather_data_model/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2546,7 +2546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../transformers/spark/ecmwf/nc_extractbase_to_weather_data_model/" class="md-nav__link">
+      <a href="../../../../transformers/spark/ecmwf/nc_extractbase_to_weather_data_model/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2567,7 +2567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../transformers/spark/ecmwf/nc_extractpoint_to_weather_data_model/" class="md-nav__link">
+      <a href="../../../../transformers/spark/ecmwf/nc_extractpoint_to_weather_data_model/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2588,7 +2588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../transformers/spark/ecmwf/nc_extractgrid_to_weather_data_model/" class="md-nav__link">
+      <a href="../../../../transformers/spark/ecmwf/nc_extractgrid_to_weather_data_model/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2737,7 +2737,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../destinations/spark/delta/" class="md-nav__link">
+      <a href="../../../../destinations/spark/delta/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2758,7 +2758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../destinations/spark/delta_merge/" class="md-nav__link">
+      <a href="../../../../destinations/spark/delta_merge/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2779,7 +2779,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../destinations/spark/eventhub/" class="md-nav__link">
+      <a href="../../../../destinations/spark/eventhub/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2800,7 +2800,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../destinations/spark/kafka_eventhub/" class="md-nav__link">
+      <a href="../../../../destinations/spark/kafka_eventhub/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2821,7 +2821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../destinations/spark/kafka/" class="md-nav__link">
+      <a href="../../../../destinations/spark/kafka/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2842,7 +2842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../destinations/spark/kinesis/" class="md-nav__link">
+      <a href="../../../../destinations/spark/kinesis/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2863,7 +2863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../destinations/spark/rest_api/" class="md-nav__link">
+      <a href="../../../../destinations/spark/rest_api/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2884,7 +2884,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../destinations/spark/pcdm_to_delta/" class="md-nav__link">
+      <a href="../../../../destinations/spark/pcdm_to_delta/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2905,7 +2905,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../destinations/spark/pcdm_latest_to_delta/" class="md-nav__link">
+      <a href="../../../../destinations/spark/pcdm_latest_to_delta/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2976,7 +2976,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../destinations/python/delta/" class="md-nav__link">
+      <a href="../../../../destinations/python/delta/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3047,7 +3047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../destinations/blockchain/evm/" class="md-nav__link">
+      <a href="../../../../destinations/blockchain/evm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3182,7 +3182,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../utilities/spark/session/" class="md-nav__link">
+      <a href="../../../../utilities/spark/session/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3203,7 +3203,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../utilities/spark/configuration/" class="md-nav__link">
+      <a href="../../../../utilities/spark/configuration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3224,7 +3224,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../utilities/spark/delta_table_create/" class="md-nav__link">
+      <a href="../../../../utilities/spark/delta_table_create/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3245,7 +3245,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../utilities/spark/delta_table_optimize/" class="md-nav__link">
+      <a href="../../../../utilities/spark/delta_table_optimize/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3266,7 +3266,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../utilities/spark/delta_table_vacuum/" class="md-nav__link">
+      <a href="../../../../utilities/spark/delta_table_vacuum/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3287,7 +3287,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../utilities/spark/adls_gen2_spn_connect/" class="md-nav__link">
+      <a href="../../../../utilities/spark/adls_gen2_spn_connect/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3360,7 +3360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../utilities/aws/s3_bucket_policy/" class="md-nav__link">
+      <a href="../../../../utilities/aws/s3_bucket_policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3381,7 +3381,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../utilities/aws/s3_copy_utility/" class="md-nav__link">
+      <a href="../../../../utilities/aws/s3_copy_utility/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3454,7 +3454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../utilities/azure/adls_gen2_acl/" class="md-nav__link">
+      <a href="../../../../utilities/azure/adls_gen2_acl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3475,7 +3475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../utilities/azure/autoloader_resources/" class="md-nav__link">
+      <a href="../../../../utilities/azure/autoloader_resources/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3554,7 +3554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../converters/pipeline_job_json/" class="md-nav__link">
+      <a href="../../../../converters/pipeline_job_json/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3629,7 +3629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../secrets/databricks/" class="md-nav__link">
+      <a href="../../../../secrets/databricks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3650,7 +3650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../secrets/hashicorp_vault/" class="md-nav__link">
+      <a href="../../../../secrets/hashicorp_vault/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3671,7 +3671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../secrets/azure_key_vault/" class="md-nav__link">
+      <a href="../../../../secrets/azure_key_vault/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3742,7 +3742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../deploy/databricks/" class="md-nav__link">
+      <a href="../../../../deploy/databricks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3768,8 +3768,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -3783,11 +3785,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_9" checked>
         
           
           <label class="md-nav__link" for="__nav_3_3_2_9" id="__nav_3_3_2_9_label" tabindex="0">
@@ -3801,7 +3803,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_3_2_9_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_3_2_9_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_3_2_9">
             <span class="md-nav__icon md-icon"></span>
             Data Quality
@@ -3812,8 +3814,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -3825,17 +3829,19 @@
       
         
       
+        
+      
     
     
       
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_9_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_9_1" checked>
         
           
           <label class="md-nav__link" for="__nav_3_3_2_9_1" id="__nav_3_3_2_9_1_label" tabindex="0">
@@ -3849,7 +3855,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_3_3_2_9_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_3_3_2_9_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_3_2_9_1">
             <span class="md-nav__icon md-icon"></span>
             Monitoring
@@ -3863,7 +3869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data_quality/monitoring/spark/check_value_ranges/" class="md-nav__link">
+      <a href="../check_value_ranges/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3926,7 +3932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data_quality/monitoring/spark/great_expectations/" class="md-nav__link">
+      <a href="../great_expectations/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3955,7 +3961,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data_quality/monitoring/spark/flatline_detection/" class="md-nav__link">
+      <a href="../flatline_detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4020,7 +4026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data_quality/monitoring/spark/identify_missing_data_interval/" class="md-nav__link">
+      <a href="../identify_missing_data_interval/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4041,7 +4047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data_quality/monitoring/spark/identify_missing_data_pattern/" class="md-nav__link">
+      <a href="../identify_missing_data_pattern/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4057,6 +4063,105 @@
             
           </ul>
         </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Moving Average
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Moving Average
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#src.sdk.python.rtdip_sdk.pipelines.data_quality.monitoring.spark.moving_average" class="md-nav__link">
+    <span class="md-ellipsis">
+      moving_average
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.sdk.python.rtdip_sdk.pipelines.data_quality.monitoring.spark.moving_average.MovingAverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      MovingAverage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MovingAverage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#src.sdk.python.rtdip_sdk.pipelines.data_quality.monitoring.spark.moving_average.MovingAverage.system_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      system_type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src.sdk.python.rtdip_sdk.pipelines.data_quality.monitoring.spark.moving_average.MovingAverage.check" class="md-nav__link">
+    <span class="md-ellipsis">
+      check
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -4136,11 +4241,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data_quality/data_manipulation/spark/duplicate_detection/" class="md-nav__link">
+      <a href="../../../data_manipulation/spark/duplicate_detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Duplicate Detection
+    Duplicate Detetection
   </span>
   
 
@@ -4157,11 +4262,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data_quality/data_manipulation/spark/out_of_range_value_filter/" class="md-nav__link">
+      <a href="../../../data_manipulation/spark/out_of_range_value_filter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Filter Out of Range Values
+    Out of Range Value Filter
   </span>
   
 
@@ -4178,7 +4283,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data_quality/data_manipulation/spark/flatline_filter/" class="md-nav__link">
+      <a href="../../../data_manipulation/spark/flatline_filter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4199,7 +4304,28 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data_quality/data_manipulation/spark/dimensionality_reduction/" class="md-nav__link">
+      <a href="../../../data_manipulation/spark/gaussian_smoothing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gaussian Smoothing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data_manipulation/spark/dimensionality_reduction/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4220,7 +4346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data_quality/data_manipulation/spark/interval_filtering/" class="md-nav__link">
+      <a href="../../../data_manipulation/spark/interval_filtering/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4241,7 +4367,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data_quality/data_manipulation/spark/k_sigma_anomaly_detection/" class="md-nav__link">
+      <a href="../../../data_manipulation/spark/k_sigma_anomaly_detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4262,7 +4388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data_quality/data_manipulation/spark/missing_value_imputation/" class="md-nav__link">
+      <a href="../../../data_manipulation/spark/missing_value_imputation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4293,6 +4419,8 @@
       
         
       
+        
+      
     
     
       
@@ -4303,10 +4431,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_9_2_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_9_2_9" >
         
           
-          <label class="md-nav__link" for="__nav_3_3_2_9_2_8" id="__nav_3_3_2_9_2_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_3_2_9_2_9" id="__nav_3_3_2_9_2_9_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -4317,8 +4445,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="6" aria-labelledby="__nav_3_3_2_9_2_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_3_2_9_2_8">
+        <nav class="md-nav" data-md-level="6" aria-labelledby="__nav_3_3_2_9_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_9_2_9">
             <span class="md-nav__icon md-icon"></span>
             Normalization
           </label>
@@ -4331,7 +4459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data_quality/data_manipulation/spark/normalization/normalization/" class="md-nav__link">
+      <a href="../../../data_manipulation/spark/normalization/normalization/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4352,7 +4480,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data_quality/data_manipulation/spark/normalization/normalization_mean/" class="md-nav__link">
+      <a href="../../../data_manipulation/spark/normalization/normalization_mean/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4373,7 +4501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data_quality/data_manipulation/spark/normalization/normalization_minmax/" class="md-nav__link">
+      <a href="../../../data_manipulation/spark/normalization/normalization_minmax/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4394,7 +4522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data_quality/data_manipulation/spark/normalization/normalization_zscore/" class="md-nav__link">
+      <a href="../../../data_manipulation/spark/normalization/normalization_zscore/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4403,6 +4531,43 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data_manipulation/spark/normalization/denormalization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Denormalization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -4429,6 +4594,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
       
@@ -4439,24 +4610,24 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_9_2_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_10" >
         
           
-          <label class="md-nav__link" for="__nav_3_3_2_9_2_9" id="__nav_3_3_2_9_2_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_3_2_10" id="__nav_3_3_2_10_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    Prediction
+    Forecasting
   </span>
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="6" aria-labelledby="__nav_3_3_2_9_2_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_3_2_9_2_9">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_3_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_10">
             <span class="md-nav__icon md-icon"></span>
-            Prediction
+            Forecasting
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -4467,7 +4638,49 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data_quality/data_manipulation/spark/prediction/arima/" class="md-nav__link">
+      <a href="../../../../forecasting/spark/data_binning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Binning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../forecasting/spark/linear_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linear Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../forecasting/spark/arima/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4488,7 +4701,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data_quality/data_manipulation/spark/prediction/auto_arima/" class="md-nav__link">
+      <a href="../../../../forecasting/spark/auto_arima/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4502,76 +4715,6 @@
 
               
             
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_10" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_3_3_2_10" id="__nav_3_3_2_10_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Machine Learning
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_3_2_10_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_3_2_10">
-            <span class="md-nav__icon md-icon"></span>
-            Machine Learning
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
               
                 
   
@@ -4579,141 +4722,15 @@
   
   
     <li class="md-nav__item">
-      <a href="../data_binning/" class="md-nav__link">
+      <a href="../../../../forecasting/spark/k_nearest_neighbors/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Data Binning
+    K Nearest Neighbors
   </span>
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Linear Regression
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Linear Regression
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#src.sdk.python.rtdip_sdk.pipelines.machine_learning.spark.linear_regression" class="md-nav__link">
-    <span class="md-ellipsis">
-      linear_regression
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src.sdk.python.rtdip_sdk.pipelines.machine_learning.spark.linear_regression.LinearRegression" class="md-nav__link">
-    <span class="md-ellipsis">
-      LinearRegression
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="LinearRegression">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#src.sdk.python.rtdip_sdk.pipelines.machine_learning.spark.linear_regression.LinearRegression.system_type" class="md-nav__link">
-    <span class="md-ellipsis">
-      system_type
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#src.sdk.python.rtdip_sdk.pipelines.machine_learning.spark.linear_regression.LinearRegression.split_data" class="md-nav__link">
-    <span class="md-ellipsis">
-      split_data
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#src.sdk.python.rtdip_sdk.pipelines.machine_learning.spark.linear_regression.LinearRegression.train" class="md-nav__link">
-    <span class="md-ellipsis">
-      train
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#src.sdk.python.rtdip_sdk.pipelines.machine_learning.spark.linear_regression.LinearRegression.predict" class="md-nav__link">
-    <span class="md-ellipsis">
-      predict
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#src.sdk.python.rtdip_sdk.pipelines.machine_learning.spark.linear_regression.LinearRegression.evaluate" class="md-nav__link">
-    <span class="md-ellipsis">
-      evaluate
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -4742,7 +4759,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../pipelines/jobs/" class="md-nav__link">
+      <a href="../../../../../../pipelines/jobs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4807,7 +4824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../pipelines/deploy/databricks/" class="md-nav__link">
+      <a href="../../../../../../pipelines/deploy/databricks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4828,7 +4845,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../pipelines/deploy/apache-airflow/" class="md-nav__link">
+      <a href="../../../../../../pipelines/deploy/apache-airflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4913,7 +4930,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/pipelines/deploy/Python-Delta-to-Delta/" class="md-nav__link">
+      <a href="../../../../../../examples/pipelines/deploy/Python-Delta-to-Delta/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4934,7 +4951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/pipelines/deploy/EdgeX-Eventhub-to-Delta/" class="md-nav__link">
+      <a href="../../../../../../examples/pipelines/deploy/EdgeX-Eventhub-to-Delta/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4955,7 +4972,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/pipelines/deploy/ECMWF-to-Delta/" class="md-nav__link">
+      <a href="../../../../../../examples/pipelines/deploy/ECMWF-to-Delta/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5020,7 +5037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/pipelines/deploy/dagster/Fledge-Dagster-Pipeline-Databricks/" class="md-nav__link">
+      <a href="../../../../../../examples/pipelines/deploy/dagster/Fledge-Dagster-Pipeline-Databricks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5041,7 +5058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/pipelines/deploy/dagster/Fledge-Dagster-Pipeline-Local/" class="md-nav__link">
+      <a href="../../../../../../examples/pipelines/deploy/dagster/Fledge-Dagster-Pipeline-Local/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5112,7 +5129,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/pipelines/deploy/databricks/MISODailyLoad-Batch-Pipeline-Databricks/" class="md-nav__link">
+      <a href="../../../../../../examples/pipelines/deploy/databricks/MISODailyLoad-Batch-Pipeline-Databricks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5141,7 +5158,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/pipelines/deploy/Fledge-SparkConnect-PCDM/" class="md-nav__link">
+      <a href="../../../../../../examples/pipelines/deploy/Fledge-SparkConnect-PCDM/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5162,7 +5179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/pipelines/deploy/MISODailyLoad-Batch-Pipeline-Local/" class="md-nav__link">
+      <a href="../../../../../../examples/pipelines/deploy/MISODailyLoad-Batch-Pipeline-Local/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5183,7 +5200,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/pipelines/deploy/PJMDailyLoad-Batch-Pipeline-Local/" class="md-nav__link">
+      <a href="../../../../../../examples/pipelines/deploy/PJMDailyLoad-Batch-Pipeline-Local/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5322,7 +5339,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../queries/functions/" class="md-nav__link">
+      <a href="../../../../../../queries/functions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5343,7 +5360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../query/functions/metadata/" class="md-nav__link">
+      <a href="../../../../../query/functions/metadata/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5426,7 +5443,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../query/functions/time_series/time_series_query_builder/" class="md-nav__link">
+      <a href="../../../../../query/functions/time_series/time_series_query_builder/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5447,7 +5464,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../query/functions/time_series/raw/" class="md-nav__link">
+      <a href="../../../../../query/functions/time_series/raw/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5468,7 +5485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../query/functions/time_series/latest/" class="md-nav__link">
+      <a href="../../../../../query/functions/time_series/latest/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5489,7 +5506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../query/functions/time_series/resample/" class="md-nav__link">
+      <a href="../../../../../query/functions/time_series/resample/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5510,7 +5527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../query/functions/time_series/plot/" class="md-nav__link">
+      <a href="../../../../../query/functions/time_series/plot/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5531,7 +5548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../query/functions/time_series/interpolate/" class="md-nav__link">
+      <a href="../../../../../query/functions/time_series/interpolate/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5552,7 +5569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../query/functions/time_series/interpolation-at-time/" class="md-nav__link">
+      <a href="../../../../../query/functions/time_series/interpolation-at-time/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5573,7 +5590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../query/functions/time_series/time-weighted-average/" class="md-nav__link">
+      <a href="../../../../../query/functions/time_series/time-weighted-average/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5594,7 +5611,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../query/functions/time_series/circular-average/" class="md-nav__link">
+      <a href="../../../../../query/functions/time_series/circular-average/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5615,7 +5632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../query/functions/time_series/circular-standard-deviation/" class="md-nav__link">
+      <a href="../../../../../query/functions/time_series/circular-standard-deviation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5636,7 +5653,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../query/functions/time_series/summary/" class="md-nav__link">
+      <a href="../../../../../query/functions/time_series/summary/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5711,7 +5728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../query/functions/weather/weather_query_builder/" class="md-nav__link">
+      <a href="../../../../../query/functions/weather/weather_query_builder/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5732,7 +5749,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../query/functions/weather/raw/" class="md-nav__link">
+      <a href="../../../../../query/functions/weather/raw/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5753,7 +5770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../query/functions/weather/latest/" class="md-nav__link">
+      <a href="../../../../../query/functions/weather/latest/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5790,7 +5807,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../query/sql/sql_query/" class="md-nav__link">
+      <a href="../../../../../query/sql/sql_query/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5863,7 +5880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../queries/connectors/" class="md-nav__link">
+      <a href="../../../../../../queries/connectors/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5884,7 +5901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../query/connectors/db-sql-connector/" class="md-nav__link">
+      <a href="../../../../../query/connectors/db-sql-connector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5905,7 +5922,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../query/connectors/pyodbc-sql-connector/" class="md-nav__link">
+      <a href="../../../../../query/connectors/pyodbc-sql-connector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5926,7 +5943,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../query/connectors/turbodbc-sql-connector/" class="md-nav__link">
+      <a href="../../../../../query/connectors/turbodbc-sql-connector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5947,7 +5964,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../query/connectors/spark-connector/" class="md-nav__link">
+      <a href="../../../../../query/connectors/spark-connector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5968,7 +5985,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../query/connectors/chatopenai_databricks_connector/" class="md-nav__link">
+      <a href="../../../../../query/connectors/chatopenai_databricks_connector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6043,7 +6060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../queries/databricks/databricks-sql/" class="md-nav__link">
+      <a href="../../../../../../queries/databricks/databricks-sql/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6064,7 +6081,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../queries/databricks/sql-warehouses/" class="md-nav__link">
+      <a href="../../../../../../queries/databricks/sql-warehouses/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6085,7 +6102,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../queries/databricks/troubleshooting/" class="md-nav__link">
+      <a href="../../../../../../queries/databricks/troubleshooting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6114,7 +6131,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../queries/spark/spark-connect/" class="md-nav__link">
+      <a href="../../../../../../queries/spark/spark-connect/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6177,7 +6194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../queries/llm/chatopenai_databricks_connector/" class="md-nav__link">
+      <a href="../../../../../../queries/llm/chatopenai_databricks_connector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6266,7 +6283,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/query/Interpolate/" class="md-nav__link">
+      <a href="../../../../../../examples/query/Interpolate/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6287,7 +6304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/query/Interpolation-at-Time/" class="md-nav__link">
+      <a href="../../../../../../examples/query/Interpolation-at-Time/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6308,7 +6325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/query/Metadata/" class="md-nav__link">
+      <a href="../../../../../../examples/query/Metadata/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6329,7 +6346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/query/Raw/" class="md-nav__link">
+      <a href="../../../../../../examples/query/Raw/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6350,7 +6367,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/query/Resample/" class="md-nav__link">
+      <a href="../../../../../../examples/query/Resample/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6371,7 +6388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/query/Plot/" class="md-nav__link">
+      <a href="../../../../../../examples/query/Plot/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6392,7 +6409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/query/Time-Weighted-Average/" class="md-nav__link">
+      <a href="../../../../../../examples/query/Time-Weighted-Average/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6413,7 +6430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/query/Circular-Average/" class="md-nav__link">
+      <a href="../../../../../../examples/query/Circular-Average/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6434,7 +6451,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/query/Circular-Standard-Deviation/" class="md-nav__link">
+      <a href="../../../../../../examples/query/Circular-Standard-Deviation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6455,7 +6472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/query/Summary/" class="md-nav__link">
+      <a href="../../../../../../examples/query/Summary/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6549,7 +6566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../api/overview/" class="md-nav__link">
+      <a href="../../../../../../../api/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6570,7 +6587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../api/authentication/" class="md-nav__link">
+      <a href="../../../../../../../api/authentication/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6591,7 +6608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../api/examples/" class="md-nav__link">
+      <a href="../../../../../../../api/examples/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6612,7 +6629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../api/rest_apis/" class="md-nav__link">
+      <a href="../../../../../../../api/rest_apis/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6675,7 +6692,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../api/deployment/azure/" class="md-nav__link">
+      <a href="../../../../../../../api/deployment/azure/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6801,7 +6818,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../domains/process_control/overview/" class="md-nav__link">
+      <a href="../../../../../../../domains/process_control/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6822,7 +6839,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../domains/process_control/data_model/" class="md-nav__link">
+      <a href="../../../../../../../domains/process_control/data_model/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6895,7 +6912,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../domains/smart_meter/overview/" class="md-nav__link">
+      <a href="../../../../../../../domains/smart_meter/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6916,7 +6933,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../domains/smart_meter/data_model/" class="md-nav__link">
+      <a href="../../../../../../../domains/smart_meter/data_model/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6989,7 +7006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../domains/weather/overview/" class="md-nav__link">
+      <a href="../../../../../../../domains/weather/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7010,7 +7027,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../domains/weather/data_model/" class="md-nav__link">
+      <a href="../../../../../../../domains/weather/data_model/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7088,7 +7105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../integration/power-bi/" class="md-nav__link">
+      <a href="../../../../../../../integration/power-bi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7162,7 +7179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../roadmap/roadmap-overview/" class="md-nav__link">
+      <a href="../../../../../../../roadmap/roadmap-overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7183,7 +7200,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../roadmap/yearly-roadmaps/2023-development-roadmap/" class="md-nav__link">
+      <a href="../../../../../../../roadmap/yearly-roadmaps/2023-development-roadmap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7204,7 +7221,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../roadmap/yearly-roadmaps/2022-development-roadmap/" class="md-nav__link">
+      <a href="../../../../../../../roadmap/yearly-roadmaps/2022-development-roadmap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7274,7 +7291,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../releases/core/" class="md-nav__link">
+      <a href="../../../../../../../releases/core/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7325,7 +7342,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../../../blog/" class="md-nav__link ">
+            <a href="../../../../../../../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -7406,7 +7423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../blog/archive/2024/" class="md-nav__link">
+      <a href="../../../../../../../blog/archive/2024/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7429,7 +7446,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../blog/archive/2023/" class="md-nav__link">
+      <a href="../../../../../../../blog/archive/2023/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7452,7 +7469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../blog/archive/2022/" class="md-nav__link">
+      <a href="../../../../../../../blog/archive/2022/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7530,7 +7547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../university/overview/" class="md-nav__link">
+      <a href="../../../../../../../university/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7576,26 +7593,26 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#src.sdk.python.rtdip_sdk.pipelines.machine_learning.spark.linear_regression" class="md-nav__link">
+  <a href="#src.sdk.python.rtdip_sdk.pipelines.data_quality.monitoring.spark.moving_average" class="md-nav__link">
     <span class="md-ellipsis">
-      linear_regression
+      moving_average
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#src.sdk.python.rtdip_sdk.pipelines.machine_learning.spark.linear_regression.LinearRegression" class="md-nav__link">
+  <a href="#src.sdk.python.rtdip_sdk.pipelines.data_quality.monitoring.spark.moving_average.MovingAverage" class="md-nav__link">
     <span class="md-ellipsis">
-      LinearRegression
+      MovingAverage
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="LinearRegression">
+    <nav class="md-nav" aria-label="MovingAverage">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#src.sdk.python.rtdip_sdk.pipelines.machine_learning.spark.linear_regression.LinearRegression.system_type" class="md-nav__link">
+  <a href="#src.sdk.python.rtdip_sdk.pipelines.data_quality.monitoring.spark.moving_average.MovingAverage.system_type" class="md-nav__link">
     <span class="md-ellipsis">
       system_type
     </span>
@@ -7604,36 +7621,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#src.sdk.python.rtdip_sdk.pipelines.machine_learning.spark.linear_regression.LinearRegression.split_data" class="md-nav__link">
+  <a href="#src.sdk.python.rtdip_sdk.pipelines.data_quality.monitoring.spark.moving_average.MovingAverage.check" class="md-nav__link">
     <span class="md-ellipsis">
-      split_data
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#src.sdk.python.rtdip_sdk.pipelines.machine_learning.spark.linear_regression.LinearRegression.train" class="md-nav__link">
-    <span class="md-ellipsis">
-      train
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#src.sdk.python.rtdip_sdk.pipelines.machine_learning.spark.linear_regression.LinearRegression.predict" class="md-nav__link">
-    <span class="md-ellipsis">
-      predict
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#src.sdk.python.rtdip_sdk.pipelines.machine_learning.spark.linear_regression.LinearRegression.evaluate" class="md-nav__link">
-    <span class="md-ellipsis">
-      evaluate
+      check
     </span>
   </a>
   
@@ -7659,13 +7649,13 @@
                   
 
 
-  <h1>Linear Regression</h1>
+  <h1>Moving Average</h1>
 
 <div class="doc doc-object doc-module">
 
 
 
-<a id="src.sdk.python.rtdip_sdk.pipelines.machine_learning.spark.linear_regression"></a>
+<a id="src.sdk.python.rtdip_sdk.pipelines.data_quality.monitoring.spark.moving_average"></a>
     <div class="doc doc-contents first">
 
 
@@ -7683,8 +7673,8 @@
 
 
 
-<h2 id="src.sdk.python.rtdip_sdk.pipelines.machine_learning.spark.linear_regression.LinearRegression" class="doc doc-heading">
-            <code>LinearRegression</code>
+<h2 id="src.sdk.python.rtdip_sdk.pipelines.data_quality.monitoring.spark.moving_average.MovingAverage" class="doc doc-heading">
+            <code>MovingAverage</code>
 
 
 </h2>
@@ -7692,11 +7682,10 @@
 
     <div class="doc doc-contents ">
             <p class="doc doc-class-bases">
-              Bases: <code><span title="src.sdk.python.rtdip_sdk.pipelines.machine_learning.interfaces.MachineLearningInterface">MachineLearningInterface</span></code></p>
+              Bases: <code><span title="src.sdk.python.rtdip_sdk.pipelines.data_quality.monitoring.interfaces.MonitoringBaseInterface">MonitoringBaseInterface</span></code>, <code><span title="src.sdk.python.rtdip_sdk.pipelines.data_quality.input_validator.InputValidator">InputValidator</span></code></p>
 
 
-      <p>This function uses pyspark.ml.LinearRegression to train a linear regression model on time data.
-And the uses the model to predict next values in the time series.</p>
+      <p>Computes and logs the moving average over a specified window size for a given PySpark DataFrame.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7713,11 +7702,11 @@ And the uses the model to predict next values in the time series.</p>
           <tr class="doc-section-item">
             <td><code>df</code></td>
             <td>
-                  <code><span title="pyspark.sql.Dataframe">Dataframe</span></code>
+                  <code><span title="pyspark.sql.DataFrame">DataFrame</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>DataFrame containing the features and labels.</p>
+                <p>The DataFrame to process.</p>
               </div>
             </td>
             <td>
@@ -7725,54 +7714,54 @@ And the uses the model to predict next values in the time series.</p>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>features_col</code></td>
+            <td><code>window_size</code></td>
             <td>
-                  <code>str</code>
+                  <code>int</code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Name of the column containing the features (the input). Default is 'features'.</p>
+                <p>The size of the moving window.</p>
               </div>
             </td>
             <td>
-                  <code>&#39;features&#39;</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>label_col</code></td>
-            <td>
-                  <code>str</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Name of the column containing the label (the input). Default is 'label'.</p>
-              </div>
-            </td>
-            <td>
-                  <code>&#39;label&#39;</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>prediction_col</code></td>
-            <td>
-                  <code>str</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Name of the column to which the prediction will be written. Default is 'prediction'.</p>
-              </div>
-            </td>
-            <td>
-                  <code>&#39;prediction&#39;</code>
+                <em>required</em>
             </td>
           </tr>
       </tbody>
     </table>
-      
 
+
+<details class="example" open>
+  <summary>Example</summary>
+  <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+<span class="kn">from</span> <span class="nn">rtdip_sdk.pipelines.monitoring.spark.data_quality.moving_average</span> <span class="kn">import</span> <span class="n">MovingAverage</span>
+
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">master</span><span class="p">(</span><span class="s2">&quot;local[1]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">&quot;MovingAverageExample&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;A2PS64V0J.:ZUX09R&quot;</span><span class="p">,</span> <span class="s2">&quot;2024-01-02 03:49:45.000&quot;</span><span class="p">,</span> <span class="s2">&quot;Good&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;A2PS64V0J.:ZUX09R&quot;</span><span class="p">,</span> <span class="s2">&quot;2024-01-02 07:53:11.000&quot;</span><span class="p">,</span> <span class="s2">&quot;Good&quot;</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;A2PS64V0J.:ZUX09R&quot;</span><span class="p">,</span> <span class="s2">&quot;2024-01-02 11:56:42.000&quot;</span><span class="p">,</span> <span class="s2">&quot;Good&quot;</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;A2PS64V0J.:ZUX09R&quot;</span><span class="p">,</span> <span class="s2">&quot;2024-01-02 16:00:12.000&quot;</span><span class="p">,</span> <span class="s2">&quot;Good&quot;</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;A2PS64V0J.:ZUX09R&quot;</span><span class="p">,</span> <span class="s2">&quot;2024-01-02 20:03:46.000&quot;</span><span class="p">,</span> <span class="s2">&quot;Good&quot;</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;TagName&quot;</span><span class="p">,</span> <span class="s2">&quot;EventTime&quot;</span><span class="p">,</span> <span class="s2">&quot;Status&quot;</span><span class="p">,</span> <span class="s2">&quot;Value&quot;</span><span class="p">]</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="p">)</span>
+
+<span class="n">moving_avg</span> <span class="o">=</span> <span class="n">MovingAverage</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+    <span class="n">window_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">moving_avg</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+</code></pre></div>
+</details>
               <details class="quote">
-                <summary>Source code in <code>src/sdk/python/rtdip_sdk/pipelines/machine_learning/spark/linear_regression.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 22</span>
+                <summary>Source code in <code>src/sdk/python/rtdip_sdk/pipelines/data_quality/monitoring/spark/moving_average.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 21</span>
+<span class="normal"> 22</span>
 <span class="normal"> 23</span>
 <span class="normal"> 24</span>
 <span class="normal"> 25</span>
@@ -7883,31 +7872,74 @@ And the uses the model to predict next values in the time series.</p>
 <span class="normal">130</span>
 <span class="normal">131</span>
 <span class="normal">132</span>
-<span class="normal">133</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">LinearRegression</span><span class="p">(</span><span class="n">MachineLearningInterface</span><span class="p">):</span>
+<span class="normal">133</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">MovingAverage</span><span class="p">(</span><span class="n">MonitoringBaseInterface</span><span class="p">,</span> <span class="n">InputValidator</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This function uses pyspark.ml.LinearRegression to train a linear regression model on time data.</span>
-<span class="sd">    And the uses the model to predict next values in the time series.</span>
+<span class="sd">    Computes and logs the moving average over a specified window size for a given PySpark DataFrame.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        df (pyspark.sql.Dataframe): DataFrame containing the features and labels.</span>
-<span class="sd">        features_col (str): Name of the column containing the features (the input). Default is &#39;features&#39;.</span>
-<span class="sd">        label_col (str): Name of the column containing the label (the input). Default is &#39;label&#39;.</span>
-<span class="sd">        prediction_col (str): Name of the column to which the prediction will be written. Default is &#39;prediction&#39;.</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        PySparkDataFrame: Returns the original PySpark DataFrame without changes.</span>
+<span class="sd">        df (pyspark.sql.DataFrame): The DataFrame to process.</span>
+<span class="sd">        window_size (int): The size of the moving window.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        ```python</span>
+<span class="sd">        from pyspark.sql import SparkSession</span>
+<span class="sd">        from rtdip_sdk.pipelines.monitoring.spark.data_quality.moving_average import MovingAverage</span>
+
+<span class="sd">        spark = SparkSession.builder.master(&quot;local[1]&quot;).appName(&quot;MovingAverageExample&quot;).getOrCreate()</span>
+
+<span class="sd">        data = [</span>
+<span class="sd">            (&quot;A2PS64V0J.:ZUX09R&quot;, &quot;2024-01-02 03:49:45.000&quot;, &quot;Good&quot;, 1.0),</span>
+<span class="sd">            (&quot;A2PS64V0J.:ZUX09R&quot;, &quot;2024-01-02 07:53:11.000&quot;, &quot;Good&quot;, 2.0),</span>
+<span class="sd">            (&quot;A2PS64V0J.:ZUX09R&quot;, &quot;2024-01-02 11:56:42.000&quot;, &quot;Good&quot;, 3.0),</span>
+<span class="sd">            (&quot;A2PS64V0J.:ZUX09R&quot;, &quot;2024-01-02 16:00:12.000&quot;, &quot;Good&quot;, 4.0),</span>
+<span class="sd">            (&quot;A2PS64V0J.:ZUX09R&quot;, &quot;2024-01-02 20:03:46.000&quot;, &quot;Good&quot;, 5.0),</span>
+<span class="sd">        ]</span>
+
+<span class="sd">        columns = [&quot;TagName&quot;, &quot;EventTime&quot;, &quot;Status&quot;, &quot;Value&quot;]</span>
+
+<span class="sd">        df = spark.createDataFrame(data, columns)</span>
+
+<span class="sd">        moving_avg = MovingAverage(</span>
+<span class="sd">            df=df,</span>
+<span class="sd">            window_size=3,</span>
+<span class="sd">        )</span>
+
+<span class="sd">        moving_avg.check()</span>
+<span class="sd">        ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">df</span><span class="p">:</span> <span class="n">PySparkDataFrame</span>
+    <span class="n">window_size</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">EXPECTED_SCHEMA</span> <span class="o">=</span> <span class="n">StructType</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="n">StructField</span><span class="p">(</span><span class="s2">&quot;TagName&quot;</span><span class="p">,</span> <span class="n">StringType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">),</span>
+            <span class="n">StructField</span><span class="p">(</span><span class="s2">&quot;EventTime&quot;</span><span class="p">,</span> <span class="n">TimestampType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">),</span>
+            <span class="n">StructField</span><span class="p">(</span><span class="s2">&quot;Status&quot;</span><span class="p">,</span> <span class="n">StringType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">),</span>
+            <span class="n">StructField</span><span class="p">(</span><span class="s2">&quot;Value&quot;</span><span class="p">,</span> <span class="n">FloatType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">),</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">df</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">,</span>
-        <span class="n">features_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;features&quot;</span><span class="p">,</span>
-        <span class="n">label_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;label&quot;</span><span class="p">,</span>
-        <span class="n">prediction_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;prediction&quot;</span><span class="p">,</span>
+        <span class="n">df</span><span class="p">:</span> <span class="n">PySparkDataFrame</span><span class="p">,</span>
+        <span class="n">window_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">window_size</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="n">window_size</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;window_size must be a positive integer.&quot;</span><span class="p">)</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">features_col</span> <span class="o">=</span> <span class="n">features_col</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">label_col</span> <span class="o">=</span> <span class="n">label_col</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">prediction_col</span> <span class="o">=</span> <span class="n">prediction_col</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">EXPECTED_SCHEMA</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">window_size</span> <span class="o">=</span> <span class="n">window_size</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">handlers</span><span class="p">:</span>
+            <span class="n">handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>
+            <span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span>
+                <span class="s2">&quot;</span><span class="si">%(asctime)s</span><span class="s2"> - </span><span class="si">%(name)s</span><span class="s2"> - </span><span class="si">%(levelname)s</span><span class="s2"> - </span><span class="si">%(message)s</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+            <span class="n">handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">system_type</span><span class="p">():</span>
@@ -7926,75 +7958,33 @@ And the uses the model to predict next values in the time series.</p>
     <span class="k">def</span> <span class="nf">settings</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">{}</span>
 
-    <span class="k">def</span> <span class="nf">split_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">train_ratio</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Splits the dataset into training and testing sets.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            train_ratio (float): The ratio of the data to be used for training. Default is 0.8 (80% for training).</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            tuple[DataFrame, DataFrame]: Returns the training and testing datasets.</span>
+<span class="sd">        Computes and logs the moving average using a specified window size.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">randomSplit</span><span class="p">([</span><span class="n">train_ratio</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">train_ratio</span><span class="p">],</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span>
 
-    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">train_df</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Trains a linear regression model on the provided data.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">linear_regression</span> <span class="o">=</span> <span class="n">ml</span><span class="o">.</span><span class="n">regression</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">(</span>
-            <span class="n">featuresCol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">features_col</span><span class="p">,</span>
-            <span class="n">labelCol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">label_col</span><span class="p">,</span>
-            <span class="n">predictionCol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prediction_col</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_validate_inputs</span><span class="p">()</span>
+
+        <span class="n">window_spec</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">Window</span><span class="o">.</span><span class="n">partitionBy</span><span class="p">(</span><span class="s2">&quot;TagName&quot;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s2">&quot;EventTime&quot;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">rowsBetween</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">window_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
         <span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">linear_regression</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Computing moving averages:&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prediction_df</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Predicts the next values in the time series.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span>
-            <span class="n">prediction_df</span><span class="p">,</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test_df</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Evaluates the trained model using RMSE.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            test_df (DataFrame): The testing dataset to evaluate the model.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            Optional[float]: The Root Mean Squared Error (RMSE) of the model or None if the prediction columnd doesn&#39;t exist.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># Check the columns of the test DataFrame</span>
-        <span class="n">test_df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">prediction_col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">test_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Error: &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">prediction_col</span><span class="si">}</span><span class="s2">&#39; column is missing in the test DataFrame.&quot;</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;MovingAverage&quot;</span><span class="p">,</span> <span class="n">avg</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;Value&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">window_spec</span><span class="p">))</span>
+            <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;TagName&quot;</span><span class="p">,</span> <span class="s2">&quot;EventTime&quot;</span><span class="p">,</span> <span class="s2">&quot;Value&quot;</span><span class="p">,</span> <span class="s2">&quot;MovingAverage&quot;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+        <span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Tag: </span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">TagName</span><span class="si">}</span><span class="s2">, Time: </span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">EventTime</span><span class="si">}</span><span class="s2">, Value: </span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">Value</span><span class="si">}</span><span class="s2">, Moving Avg: </span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">MovingAverage</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="p">)</span>
-            <span class="k">return</span> <span class="kc">None</span>
 
-        <span class="c1"># Evaluator for RMSE</span>
-        <span class="n">evaluator_rmse</span> <span class="o">=</span> <span class="n">RegressionEvaluator</span><span class="p">(</span>
-            <span class="n">labelCol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">label_col</span><span class="p">,</span>
-            <span class="n">predictionCol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prediction_col</span><span class="p">,</span>
-            <span class="n">metricName</span><span class="o">=</span><span class="s2">&quot;rmse&quot;</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="n">rmse</span> <span class="o">=</span> <span class="n">evaluator_rmse</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_df</span><span class="p">)</span>
-
-        <span class="c1"># Evaluator for R²</span>
-        <span class="n">evaluator_r2</span> <span class="o">=</span> <span class="n">RegressionEvaluator</span><span class="p">(</span>
-            <span class="n">labelCol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">label_col</span><span class="p">,</span> <span class="n">predictionCol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prediction_col</span><span class="p">,</span> <span class="n">metricName</span><span class="o">=</span><span class="s2">&quot;r2&quot;</span>
-        <span class="p">)</span>
-        <span class="n">r2</span> <span class="o">=</span> <span class="n">evaluator_r2</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_df</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">rmse</span><span class="p">,</span> <span class="n">r2</span>
+    <span class="k">def</span> <span class="nf">_validate_inputs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">window_size</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">window_size</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;window_size must be a positive integer.&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
               </details>
 
@@ -8013,7 +8003,7 @@ And the uses the model to predict next values in the time series.</p>
 <div class="doc doc-object doc-function">
 
 
-<h3 id="src.sdk.python.rtdip_sdk.pipelines.machine_learning.spark.linear_regression.LinearRegression.system_type" class="doc doc-heading">
+<h3 id="src.sdk.python.rtdip_sdk.pipelines.data_quality.monitoring.spark.moving_average.MovingAverage.system_type" class="doc doc-heading">
             <code class="highlight language-python"><span class="n">system_type</span><span class="p">()</span></code>
 
   <span class="doc doc-labels">
@@ -8038,7 +8028,7 @@ And the uses the model to predict next values in the time series.</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code><span title="src.sdk.python.rtdip_sdk.pipelines.machine_learning.spark.linear_regression.LinearRegression.system_type.SystemType">SystemType</span></code></td>
+            <td><code><span title="src.sdk.python.rtdip_sdk.pipelines.data_quality.monitoring.spark.moving_average.MovingAverage.system_type.SystemType">SystemType</span></code></td>
             <td>
                   <code>Environment</code>
             </td>
@@ -8052,14 +8042,14 @@ And the uses the model to predict next values in the time series.</p>
     </table>
 
             <details class="quote">
-              <summary>Source code in <code>src/sdk/python/rtdip_sdk/pipelines/machine_learning/spark/linear_regression.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
+              <summary>Source code in <code>src/sdk/python/rtdip_sdk/pipelines/data_quality/monitoring/spark/moving_average.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span> <span class="nf">system_type</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Attributes:</span>
@@ -8075,254 +8065,19 @@ And the uses the model to predict next values in the time series.</p>
 <div class="doc doc-object doc-function">
 
 
-<h3 id="src.sdk.python.rtdip_sdk.pipelines.machine_learning.spark.linear_regression.LinearRegression.split_data" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">split_data</span><span class="p">(</span><span class="n">train_ratio</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span></code>
+<h3 id="src.sdk.python.rtdip_sdk.pipelines.data_quality.monitoring.spark.moving_average.MovingAverage.check" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">check</span><span class="p">()</span></code>
 
 </h3>
 
 
     <div class="doc doc-contents ">
 
-      <p>Splits the dataset into training and testing sets.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>train_ratio</code></td>
-            <td>
-                  <code>float</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The ratio of the data to be used for training. Default is 0.8 (80% for training).</p>
-              </div>
-            </td>
-            <td>
-                  <code>0.8</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code>tuple[<span title="pyspark.sql.DataFrame">DataFrame</span>, <span title="pyspark.sql.DataFrame">DataFrame</span>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>tuple[DataFrame, DataFrame]: Returns the training and testing datasets.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+      <p>Computes and logs the moving average using a specified window size.</p>
 
             <details class="quote">
-              <summary>Source code in <code>src/sdk/python/rtdip_sdk/pipelines/machine_learning/spark/linear_regression.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">split_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">train_ratio</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Splits the dataset into training and testing sets.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        train_ratio (float): The ratio of the data to be used for training. Default is 0.8 (80% for training).</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        tuple[DataFrame, DataFrame]: Returns the training and testing datasets.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">randomSplit</span><span class="p">([</span><span class="n">train_ratio</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">train_ratio</span><span class="p">],</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h3 id="src.sdk.python.rtdip_sdk.pipelines.machine_learning.spark.linear_regression.LinearRegression.train" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">train</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span></code>
-
-</h3>
-
-
-    <div class="doc doc-contents ">
-
-      <p>Trains a linear regression model on the provided data.</p>
-
-            <details class="quote">
-              <summary>Source code in <code>src/sdk/python/rtdip_sdk/pipelines/machine_learning/spark/linear_regression.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span>
-<span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">train_df</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Trains a linear regression model on the provided data.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">linear_regression</span> <span class="o">=</span> <span class="n">ml</span><span class="o">.</span><span class="n">regression</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">(</span>
-        <span class="n">featuresCol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">features_col</span><span class="p">,</span>
-        <span class="n">labelCol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">label_col</span><span class="p">,</span>
-        <span class="n">predictionCol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prediction_col</span><span class="p">,</span>
-    <span class="p">)</span>
-
-    <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">linear_regression</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
-    <span class="k">return</span> <span class="bp">self</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h3 id="src.sdk.python.rtdip_sdk.pipelines.machine_learning.spark.linear_regression.LinearRegression.predict" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">predict</span><span class="p">(</span><span class="n">prediction_df</span><span class="p">)</span></code>
-
-</h3>
-
-
-    <div class="doc doc-contents ">
-
-      <p>Predicts the next values in the time series.</p>
-
-            <details class="quote">
-              <summary>Source code in <code>src/sdk/python/rtdip_sdk/pipelines/machine_learning/spark/linear_regression.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">91</span>
-<span class="normal">92</span>
-<span class="normal">93</span>
-<span class="normal">94</span>
-<span class="normal">95</span>
-<span class="normal">96</span>
-<span class="normal">97</span>
-<span class="normal">98</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prediction_df</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Predicts the next values in the time series.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span>
-        <span class="n">prediction_df</span><span class="p">,</span>
-    <span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h3 id="src.sdk.python.rtdip_sdk.pipelines.machine_learning.spark.linear_regression.LinearRegression.evaluate" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">evaluate</span><span class="p">(</span><span class="n">test_df</span><span class="p">)</span></code>
-
-</h3>
-
-
-    <div class="doc doc-contents ">
-
-      <p>Evaluates the trained model using RMSE.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>test_df</code></td>
-            <td>
-                  <code><span title="pyspark.sql.DataFrame">DataFrame</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The testing dataset to evaluate the model.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="typing.Optional">Optional</span>[float]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Optional[float]: The Root Mean Squared Error (RMSE) of the model or None if the prediction columnd doesn't exist.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-            <details class="quote">
-              <summary>Source code in <code>src/sdk/python/rtdip_sdk/pipelines/machine_learning/spark/linear_regression.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
+              <summary>Source code in <code>src/sdk/python/rtdip_sdk/pipelines/data_quality/monitoring/spark/moving_average.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">107</span>
 <span class="normal">108</span>
 <span class="normal">109</span>
 <span class="normal">110</span>
@@ -8344,44 +8099,29 @@ And the uses the model to predict next values in the time series.</p>
 <span class="normal">126</span>
 <span class="normal">127</span>
 <span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test_df</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="normal">129</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Evaluates the trained model using RMSE.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        test_df (DataFrame): The testing dataset to evaluate the model.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        Optional[float]: The Root Mean Squared Error (RMSE) of the model or None if the prediction columnd doesn&#39;t exist.</span>
+<span class="sd">    Computes and logs the moving average using a specified window size.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># Check the columns of the test DataFrame</span>
-    <span class="n">test_df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">prediction_col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">test_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Error: &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">prediction_col</span><span class="si">}</span><span class="s2">&#39; column is missing in the test DataFrame.&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_validate_inputs</span><span class="p">()</span>
+
+    <span class="n">window_spec</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">Window</span><span class="o">.</span><span class="n">partitionBy</span><span class="p">(</span><span class="s2">&quot;TagName&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s2">&quot;EventTime&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">rowsBetween</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">window_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Computing moving averages:&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;MovingAverage&quot;</span><span class="p">,</span> <span class="n">avg</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;Value&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">window_spec</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;TagName&quot;</span><span class="p">,</span> <span class="s2">&quot;EventTime&quot;</span><span class="p">,</span> <span class="s2">&quot;Value&quot;</span><span class="p">,</span> <span class="s2">&quot;MovingAverage&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Tag: </span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">TagName</span><span class="si">}</span><span class="s2">, Time: </span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">EventTime</span><span class="si">}</span><span class="s2">, Value: </span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">Value</span><span class="si">}</span><span class="s2">, Moving Avg: </span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">MovingAverage</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="p">)</span>
-        <span class="k">return</span> <span class="kc">None</span>
-
-    <span class="c1"># Evaluator for RMSE</span>
-    <span class="n">evaluator_rmse</span> <span class="o">=</span> <span class="n">RegressionEvaluator</span><span class="p">(</span>
-        <span class="n">labelCol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">label_col</span><span class="p">,</span>
-        <span class="n">predictionCol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prediction_col</span><span class="p">,</span>
-        <span class="n">metricName</span><span class="o">=</span><span class="s2">&quot;rmse&quot;</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="n">rmse</span> <span class="o">=</span> <span class="n">evaluator_rmse</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_df</span><span class="p">)</span>
-
-    <span class="c1"># Evaluator for R²</span>
-    <span class="n">evaluator_r2</span> <span class="o">=</span> <span class="n">RegressionEvaluator</span><span class="p">(</span>
-        <span class="n">labelCol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">label_col</span><span class="p">,</span> <span class="n">predictionCol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prediction_col</span><span class="p">,</span> <span class="n">metricName</span><span class="o">=</span><span class="s2">&quot;r2&quot;</span>
-    <span class="p">)</span>
-    <span class="n">r2</span> <span class="o">=</span> <span class="n">evaluator_r2</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_df</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">rmse</span><span class="p">,</span> <span class="n">r2</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -8453,11 +8193,11 @@ And the uses the model to predict next values in the time series.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../../../../..", "features": ["content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.tooltips", "navigation.indexes", "navigation.instant", "navigation.tabs", "navigation.top", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "tags": {"Pipelines": "pipelines"}, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../../../../..", "features": ["content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.tooltips", "navigation.indexes", "navigation.instant", "navigation.tabs", "navigation.top", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "tags": {"Pipelines": "pipelines"}, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
   
-      <script src="../../../../../../assets/javascripts/bundle.dd8806f2.min.js"></script>
+      <script src="../../../../../../../assets/javascripts/bundle.dd8806f2.min.js"></script>
       
     
 
