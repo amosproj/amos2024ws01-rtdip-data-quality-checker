@@ -103,7 +103,7 @@ class GaussianSmoothing(DataManipulationBaseInterface):
         return {}
 
     @staticmethod
-    def create_gaussian_smoother(sigma_value):
+    def create_gaussian_smoother(sigma_value) -> callable:
         def apply_gaussian(values):
             if not values:
                 return None
